@@ -1,0 +1,39 @@
+﻿body 
+{
+	border: solid 5px;
+	background-color: black;
+}
+table {
+	width: 1700px; 
+	table-layout: fixed;
+	margin-top: 150px; 
+	/*margin-right: 150px;*/ 
+	margin-bottom: 100px; 
+	margin-left: 75px; 
+}
+
+th, td 
+{
+	border: solid 3px white;
+	/*width: 80px;*/
+	height: 30px;
+}
+.bg-yellow 
+{
+	background-color: yellow;
+}
+
+.bg-deepskyblue 
+{
+	background-color: deepskyblue;
+}
+
+.bg-yellowgreen
+{
+	background-color: yellowgreen;
+}
+
+.bg-red 
+{
+	background-color: red;
+}

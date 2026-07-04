@@ -4,18 +4,21 @@
 	background-color: black;
 }
 table {
-	width: 1700px; 
+	width: 90%;
+	height: 75vh; /*сколько в процентах занимает по высоте*/
+	margin: 12.5vh auto; /*оставшиеся 25 процентов пополам делим между верхним и нижним отступом*/
 	table-layout: fixed;
-	margin-top: 150px; 
-	/*margin-right: 150px;*/ 
-	margin-bottom: 100px; 
-	margin-left: 75px; 
+	border-collapse: collapse; 
 }
+
+	/* Принудительно распределяем высоту для всех строк, это просто 100 процентов на 17 поделила */
+	table tr {
+		height: 5.88%;
+	}
 
 th, td 
 {
 	border: solid 3px white;
-	/*width: 80px;*/
 	height: 30px;
 }
 .bg-yellow 
@@ -28,12 +31,19 @@ th, td
 	background-color: deepskyblue;
 }
 
-.bg-yellowgreen
-{
-	background-color: yellowgreen;
+.bg-yellowgreen {
+	background-color: olive;
 }
 
 .bg-red 
 {
 	background-color: red;
+}
+
+.bg-maroon {
+	background-color: maroon;
+}
+
+.bg-darkblue {
+	background-color: #0014A8;
 }

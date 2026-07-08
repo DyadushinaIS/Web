@@ -1,0 +1,157 @@
+﻿/* Базовые настройки страницы */
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #ffffff;
+	font-family: 'Times New Roman', Arial, sans-serif;
+}
+
+/* Главный контейнер с полями от краев */
+.table-container {
+	width: 98vw;
+	height: 96vh;
+	margin: 2vh auto;
+	box-sizing: border-box;
+}
+
+/* Заголовок над таблицей */
+.table-title {
+	margin: 0 0 5px 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+	text-align: center;
+}
+
+/* Структура классической таблицы */
+table {
+	border-collapse: collapse;
+	width: 100%;
+	height: calc(100% - 30px);
+	table-layout: fixed; /* Гарантирует строгие пропорции колонок */
+}
+
+tr {
+	height: auto;
+}
+
+/* Общие рамки для всех ячеек */
+td, th {
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	padding: 4px;
+	vertical-align: top; /* Текст элементов прижимается к верху */
+}
+
+/* Обычные карточки элементов */
+td {
+	background-color: #ffffff;
+	font-size: 11px;
+	position: relative; /* Нужно для позиционирования массы внизу */
+	height: 100%;
+}
+
+/* Академическая строгая шапка */
+th {
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+	background-color: #ffffff;
+	text-align: center;
+	vertical-align: middle;
+}
+
+	th.corner {
+		font-size: 11px;
+		line-height: 1.3;
+	}
+
+	th.block-title {
+		font-size: 12px;
+		font-weight: bold;
+		color: #000000;
+		text-align: right;
+		padding-right: 15px;
+		background: none;
+		border: none;
+	}
+
+/* Служебные пустоты */
+td.empty {
+	border: none;
+	background: none;
+}
+
+/* Внутренние текстовые слои элементов */
+.elem-header {
+	display: flex;
+	justify-content: space-between;
+	font-size: 10px;
+	color: #333333;
+	margin-bottom: 2px;
+}
+
+.sym {
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+	text-align: center;
+	margin: 4px 0 2px 0;
+}
+
+.name {
+	font-size: 9px;
+	text-align: center;
+	color: #000000;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+/* Ряд-промежуток */
+tr.separator {
+	height: 15px;
+}
+
+	tr.separator td {
+		border: none;
+		background: none;
+	}
+
+/* Контейнеры для лантаноидов/актиноидов */
+.lanth-wrapper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.lanth-cell {
+	width: calc(100% / 15);
+	border: 1px solid #000000;
+	padding: 2px;
+	font-size: 10px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+/* ЦВЕТОВАЯ ГАММА ПО ШАБЛОНУ */
+.reactive-nonmetal, .s-metal, .s-element, .p-element, .metalloid {
+	background-color: #ffffff;
+}
+
+/* Главная подгруппа VIII группы (инертные газы — розовые) */
+.noble-gas {
+	background-color: #f2d6e8;
+}
+
+/* Побочные подгруппы (Б) (переходные металлы — голубые) */
+.d-element {
+	background-color: #e3f2fd;
+}
+
+/* Вынесенные нижние блоки (зеленые) */
+.lanthanide, .actinide {
+	background-color: #e8f5e9 !important;
+}

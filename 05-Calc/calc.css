@@ -1,4 +1,4 @@
-﻿﻿body {
+﻿body {
     background-image: url("bliss.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -125,4 +125,36 @@
     height: 258px;
     background-color: rgb(235, 233, 216);
     box-shadow: 0px 0px 2px 1px darkblue;
+}
+/*/////////////////////////////////////////////////////////////////*/
+.menu-bar
+{
+    border-bottom:solid 1px white;
+}
+
+.menu-bar > button
+{
+    border:none;
+    background-color:rgb(235, 233, 216);
+    height:24px;
+}
+.menu-bar > button:hover
+{
+    background-color:#5555BB;
+    color:white;
+}
+/*/////////////////////////////////////////////////////////////////*/
+
+.display-container
+{
+    padding:4px;
+    display:flex;
+    justify-content:center;
+}
+#display
+{
+    width:95%;
+    border:solid 1px gray;
+    border-radius:0px;
+    text-align:right;
 }

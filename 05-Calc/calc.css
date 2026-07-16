@@ -1,9 +1,13 @@
-﻿﻿body {
-    background-image: url(bliss.jpg);
+﻿body {
+    background-image: url("bliss.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Tahoma;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px;
 }
 
 .main-window {
@@ -159,7 +163,7 @@
 
 #display {
     width: 95%;
-    border: solid 1px gray;
+    border: solid 1.5px gray;
     border-radius: 0px;
     text-align: right;
 }
@@ -172,6 +176,19 @@
     grid-template-columns: repeat(6,auto);
     /*grid-gap:8px;*/
     grid-row-gap: 8px;
+    grid-column-gap: 5px;
+}
+
+.square {
+    width: 26px;
+    height: 26px;
+    border: inset 2px;
+    margin-left: 4px;
+}
+
+.calc-buttons button {
+    width: 42px;
+    height: 30px;
 }
 
 .clear-buttons {
@@ -180,13 +197,31 @@
     grid-column-end: 7;
 }
 
-.square {
-    width: 30px;
-    height: 30px;
-    border: solid 1px;
+    .clear-buttons > button {
+        width: 78px;
+        margin-right: 1px;
+    }
+
+.memory-button {
+    margin: 0px 7px 0px -2px;
 }
 
 .calc-buttons button {
-    width: 42px;
-    height: 30px;
+    color: blue;
+    border: solid 1.5px darkblue;
+    border-radius: 5px;
+    box-shadow: inset 0px -2px 3px 0px lightgray;
+}
+
+    .calc-buttons button:hover {
+        box-shadow: inset 0px -1px 5px 0px orange;
+    }
+
+    .calc-buttons button:active {
+        background-color: lightgray;
+        box-shadow: inset 0px -1px 5px 0px white,inset 0px 2px 3px 0px darkgray;
+    }
+
+.calc-buttons > .memory-button, .calc-buttons > .operation-button, .clear-buttons > button {
+    color: red;
 }

@@ -6,6 +6,50 @@
     <title></title>
 </head>
 <body>
+    <h1>Fibonacci_2</h1>
+    <div>
+        <label for="fibonacci_number">Введите количество чисел для ряда Фибоначчи:</label>
+        <input id="fibonacci_number" type="number">
+        <div id="fibonacci_result"></div>
+        <button onclick="Fibonacci()">Вывести ряд</button>
+    </div>
+
+    <script>
+        function Fibonacci() {
+            // Получаем количество
+            let fibonacci_number = document.getElementById("fibonacci_number");
+            let amount = Number(fibonacci_number.value);
+
+            // Первые два числа Фибоначчи
+            let a = 0n;
+            let b = 1n;
+
+            // Очищаем результат
+            document.getElementById("fibonacci_result").innerHTML = ``;
+
+            // Выводим первое число
+
+            if (amount > 0) {
+                document.getElementById("fibonacci_result").innerHTML += `F(0) = ${a};<br>`;
+            }
+
+            // Если количество больше 1, выводим второе число
+            if (amount > 1) {
+                document.getElementById("fibonacci_result").innerHTML += `F(1) = ${b};<br>`;            }
+
+            // Вычисляем и выводим остальные числа (начиная с индекса 2)
+            let next;
+            for (let i = 2; i < amount; i++) {
+                next = a + b;  // Следующее число = сумма двух предыдущих
+                document.getElementById("fibonacci_result").innerHTML += `F(${i}) = ${next};<br>`;
+                a = b;
+                b = next;
+            }
+
+            // Выводим финальный результат
+            document.getElementById("fibonacci_result").innerHTML += `<h3>Первые ${amount} чисел Фибоначчи</h3>`;
+        }
+    </script>
 
 </body>
 </html>

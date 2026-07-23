@@ -6,6 +6,44 @@
     <title></title>
 </head>
 <body>
+    <h1>Power</h1>
+    <div>
+        <label for="power-number">Введите число:</label>
+        <input id="power-number" type="number">
+        <br><br>
+        <label for="power-exponent">Введите степень:</label>
+        <input id="power-exponent" type="number">
+        <br><br>
+        <div id="power-result"></div>
+        <button onclick="Power()">Вычислить</button>
+    </div>
+
+    <script>
+        function Power() {
+            // Получаем число
+            let power_number = document.getElementById("power-number");
+            let number = BigInt(power_number.value);
+
+            // Получаем степень
+            let power_exponent = document.getElementById("power-exponent");
+            let exponent = BigInt(power_exponent.value);
+
+            // Результат
+            let result = BigInt(1);
+
+            // Очищаем результат
+            document.getElementById("power-result").innerHTML = ``;
+
+            // Возводим в степень через умножение
+            for (let i = 1n; i <= exponent; i++) {
+                result *= number;
+                document.getElementById("power-result").innerHTML += `${number}^${i} = ${result};<br>`;
+            }
+
+            // Выводим финальный результат
+            document.getElementById("power-result").innerHTML += `<h3>${number}^${exponent} = ${result};</h3>`;
+        }
+    </script>
 
 </body>
 </html>

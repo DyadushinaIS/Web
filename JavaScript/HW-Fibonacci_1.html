@@ -6,6 +6,58 @@
     <title></title>
 </head>
 <body>
+    <h1>Fibonacci_1</h1>
+    <div>
+        <label for="fibonacci_max">Введите максимальную границу для вывода чисел Фибоначчи):</label>
+        <input id="fibonacci_max" type="number">
+        <div id="fibonacci_result"></div>
+        <button onclick="Fibonacci()">Вывести числа</button>
+    </div>
+
+    <script>
+        function Fibonacci() {
+            // Получаем максимум
+            let fibonacci_max = document.getElementById("fibonacci_max");
+            let max = Number(fibonacci_max.value);
+
+            // Первые два числа Фибоначчи
+            let a = 0n;
+            let b = 1n;
+
+            // Очищаем результат
+            document.getElementById("fibonacci_result").innerHTML = ``;
+
+            // Выводим первое число (0 меньше любого положительного числа)
+            document.getElementById("fibonacci_result").innerHTML += `${a};<br>`;
+
+            // Если максимум больше 1, выводим второе число
+            if (max > 1) {
+                document.getElementById("fibonacci_result").innerHTML += `${b};<br>`;
+            }
+
+            // Вычисляем и выводим следующие числа, пока они меньше максимума
+            let next;
+
+            while (true) {
+                next = a + b;  // Следующее число = сумма двух предыдущих
+
+                // Если следующее число больше или равно максимуму _ выходим из цикла
+                if (next >= max) {
+                    break;
+                }
+
+                // Выводим число
+                document.getElementById("fibonacci_result").innerHTML += `${next};<br>`;
+
+                // Сдвигаемся дальше
+                a = b;
+                b = next;
+            }
+
+            // Выводим финальный результат
+            document.getElementById("fibonacci_result").innerHTML += `<h3>Все числа Фибоначчи меньше ${max}</h3>`;
+        }
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="events.css">
+	<title>JavaScript Events</title>
+</head>
+<body class="light">
+	<div class="header">
+		<h3>Header</h3>
+		<h3 id="mouse-coords"></h3>
+		<div id="switch-background"></div>
+		<!--<img src="moon.png" id="switch-background">-->
+	</div>
+	<h1>JavaScript Events</h1>
+
+	<div class="images-and-colors">
+		<div class="load-image">
+			<div class="image-container">
+				<img src="D:\Users\User\Pictures\1398215896_1768974925.jpg" alt="Фото студента" id="image">
+			</div>
+			<input type="file" id="image-file" onchange="setImage()">
+			<div id="debug"></div>
+		</div>
+
+		<div class="colors">
+			<div>
+				<label for="background-color">Выберите цвет фона:</label>
+				<input type="color" id="background-color" oninput="setColor(event)">
+			</div>
+			<div>
+				<label for="foreground-color">Выберите цвет текста:</label>
+				<input type="color" id="foreground-color" oninput="setColor(event)">
+			</div>
+			<div>
+				<label for="transition-speed">Введите скорость изменения (сек):</label>
+				<input type="number" id="transition-speed" min="0" max="10" step="0.5" value="3" oninput="setTransitionSpeed()">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function setImage() {
+			let filename = document.getElementById("image-file");
+			let file = filename.files[0];
+			document.getElementById("debug").innerHTML = URL.createObjectURL(file);
+			document.getElementById("image").src = URL.createObjectURL(file);
+		}
+
+		function setColor(e) {
+			document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
+		}
+
+		document.addEventListener("mousemove", trackMouse);
+		function trackMouse(e) {
+			document.getElementById("mouse-coords").innerHTML = `Mouse: X = ${e.clientX}, Y = ${e.clientY}`;
+		}
+
+		document.getElementById("switch-background").addEventListener("click", switchBackground);
+		function switchBackground(e) {
+			document.body.className = document.body.className === 'dark' ? 'light' : 'dark';
+		}
+
+		function setTransitionSpeed() {
+			let speed = document.getElementById("transition-speed").value;
+			// Переписываем transition, который у нас задан по умолчанию 3 секунды
+			document.body.style.transition = `background-color ${speed}s, color ${speed}s`;
+			document.getElementById("switch-background").style.transition = `${speed}s`;
+		}
+	</script>
+</body>
+</html>

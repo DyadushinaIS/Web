@@ -2,99 +2,96 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="events.css">
-    <title>JavaScript Events</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="events.css">
+	<title>JavaScript Events</title>
 </head>
 <body class="light">
-    <div class="header">
-        <h3>Header</h3>
-        <h3 id="mouse-coords"></h3>
-        <div id="switch-background"></div>
-        <!--<img src="moon.png" id="switch-background">-->
-    </div>
-    <h1>JavaScript Events</h1>
+	<div class="header">
+		<h3>Header</h3>
+		<h3 id="mouse-coords"></h3>
+		<div id="switch-background"></div>
+		<!--<img src="moon.png" id="switch-background">-->
+	</div>
+	<h1>JavaScript Events</h1>
 
-    <div class="images-and-colors">
-        <div class="load-image">
-            <div class="image-container">
-                <img src="D:\Users\User\Pictures\1398215896_1768974925.jpg" alt="Фото студента" id="image">
+	<details>
+		<summary>Картинки и цветы</summary>
+		<div class="images-and-colors">
+			<div class="load-image">
+				<div class="image-container">
+					<img src="D:\Users\User\Pictures\1398215896_1768974925.jpg" alt="Фото студента" id="image">
+				</div>
+				<input type="file" id="image-file" onchange="setImage()">
+				<div id="debug"></div>
+			</div>
+
+			<div class="colors">
+				<div>
+					<label for="background-color">Выберите цвет фона:</label>
+					<input type="color" id="background-color" oninput="setColor(event)">
+					<!--<input type="color" id="background-color" oninput="setBackgroundColor()">-->
+				</div>
+				<div>
+					<label for="foreground-color">Выберите цвет текста:</label>
+					<input type="color" id="foreground-color" oninput="setColor(event)">
+					<!--<input type="color" id="foreground-color" oninput="setForegroundColor(event)">-->
+				</div>
+			</div>
+		</div>
+	</details>
+
+	<h2 id="full-time"></h2>
+
+    <details>
+        <div id="clock">
+            <div id="current-time">
+                <span id="hours"></span> :
+                <span id="minutes"></span> :
+                <span id="seconds"></span>
             </div>
-            <input type="file" id="image-file" onchange="setImage()">
-            <div id="debug"></div>
+            <div id="current-date">
+                <span id="years"></span> .
+                <span id="months"></span> .
+                <span id="days"></span>
+            </div>
+            <div id="day-of-week"></div>
+            <div id="clock-controls">
+                <input type="checkbox" id="show-date"><label for="show-date">Показать дату</label>
+                <input type="checkbox" id="show-weekday"><label for="show-weekday">Показать день недели</label>
+            </div>
         </div>
+    </details>
 
-        <div class="colors">
-            <div>
-                <label for="background-color">Выберите цвет фона:</label>
-                <input type="color" id="background-color" oninput="setColor(event)">
-                <!--<input type="color" id="background-color" oninput="setBackgroundColor()">-->
-            </div>
-            <div>
-                <label for="foreground-color">Выберите цвет текста:</label>
-                <input type="color" id="foreground-color" oninput="setColor(event)">
-                <!--<input type="color" id="foreground-color" oninput="setForegroundColor(event)">-->
-            </div>
-        </div>
-    </div>
+	<div class="count-down timer">
+		<h2>Countdown timer</h2>
+		<input type="date"id="target-date"/>
+		<input type="time"id="target-time" />
+		<input type="button"id="btn-start"value="Start" />
+	</div>
 
-    <script>
-		function setImage()
-		{
-			let filename = document.getElementById("image-file");
-			//let reader = new FileReader();
-			//reader.onload = function (e)
-			//{
-			//	document.getElementById("image").src = e.target.result;
-			//}
-			//reader.readAsDataURL(filename.files[0]);
+	<div id="display">
+		<div class="time-block">
+			<div id="hours-unit" class="time-unit"></div>
+			<div id="hours-marker"class="time-marker">Hours</div>
+		</div>
 
-			let file = filename.files[0];
-			//document.getElementById("debug").innerHTML = filename.files[0].name;
-			document.getElementById("debug").innerHTML = URL.createObjectURL(file);
-			document.getElementById("image").src = URL.createObjectURL(file);
-		}
-			//DOM - Document Object Model (Объектная модель документа).
-			//Document document = new Document();
-		function setBackgroundColor()
-		{
-			document.body.style.backgroundColor = document.getElementById("background-color").value;
-		}
-		function setForegroundColor(e)
-		{
-			//document.getElementsByClassName("load-image")[0].style.backgroundColor =
-			document.body.style.color = e.target.value;
-		}
-		function setColor(e)
-		{
-			console.log(e.target);
-			console.log(document.body.style['backgroundColor']);
-			console.log(document.body.style['background-color']);
+		<div class="time-block">
+			<div id="minutes-unit" class="time-unit"></div>
+			<div id="minutes-marker"class="time-marker">Minutes</div>
+		</div>
 
-			document.body.style[e.target.id === 'background-color' ? 'backgroundColor' : 'color'] = e.target.value;
+		<div class="time-block">
+			<div id="seconds-unit" class="time-unit"></div>
+			<div id="seconds-marker" class="time-marker">Seconds</div>
+		</div>
 
-			//(e.target.id === "background-color" ? document.body.style.backgroundColor : document.body.style.color) = e.target.value;
-			/*if (e.target.id === "background-color")
-				document.body.style.backgroundColor = e.target.value;
-			else
-				document.body.style.color = e.target.value;*/
-		}
-		console.log(true === 1);
+	</div>
 
-		document.addEventListener("mousemove", trackMouse);
-		function trackMouse(e)
-		{
-			document.getElementById("mouse-coords").innerHTML = `Mouse: X = ${e.clientX}, Y = ${e.clientY}`;
-		}
 
-		document.getElementById("switch-background").addEventListener("click", switchBackground);
-		function switchBackground(e)
-		{
-			//console.log(e.target.id);
-			//console.log(e.target.src);
-			//e.target.src = (e.target.src.includes('moon.png') ? 'sun.png' : 'moon.png');
-			document.body.className = document.body.className === 'dark' ? 'light' : 'dark';
-		}
-    </script>
+	<script src="events.js">
+		let a;
+		alert("Hello");
+	</script>
 </body>
 </html>
